@@ -1,0 +1,12 @@
+parameters:
+    email_manager.email_from: example@email.com
+
+services:
+    email_manager:
+        class: KK\StartBootStrapBundle\Service\EmailManager
+        arguments: [@mailer, %email_manager.email_from%]
+
+    contact.contact_form_handler:
+        class: KK\StartBootStrapBundle\Form\FormHandler\ContactFormHandler
+        arguments: [@request, @templating, @email_manager, @service_container]
+        scope: request

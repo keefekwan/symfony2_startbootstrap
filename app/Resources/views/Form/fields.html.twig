@@ -1,0 +1,18 @@
+{# app/Resources/views/Form/fields.html.twig #}
+
+{% block form_row -%}
+    <div class="form-group col-lg-4">
+        {{- form_label(form) -}}
+        {{- form_errors(form) -}}
+        {{- form_widget(form) -}}
+    </div>
+{%- endblock form_row %}
+
+{% block form_widget_simple -%}
+    {% set type = type|default('text') -%}
+    <input style="margin-left: 0px; width:100%;" class="form-control" type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %} />
+{%- endblock form_widget_simple %}
+
+{% block textarea_widget -%}
+    <textarea  style="width: 317%" {{ block('widget_attributes') }} class="form-control" rows="6">{{ value }}</textarea>
+{%- endblock textarea_widget %}

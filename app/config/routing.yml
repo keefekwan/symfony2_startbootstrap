@@ -1,0 +1,5 @@
+kk_start_boot_strap:
+    resource: "@KKStartBootStrapBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

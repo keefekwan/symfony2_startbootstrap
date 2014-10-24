@@ -1,0 +1,67 @@
+{# app/Resources/Bootstrap/blog.html.twig #}
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div class="brand">Business Casual</div>
+    <div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>
+
+    <!-- Navigation -->
+    {% block navbar %}
+        {{ parent() }}
+    {% endblock %}
+
+    <div class="container">
+
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center">Company
+                        <strong>blog</strong>
+                    </h2>
+                    <hr>
+                </div>
+                {% for post in posts %}
+                <div class="col-lg-12 text-center">
+                    <img class="img-responsive img-border img-full" src="{{ asset(['images/', post.image]|join) }}" alt="">
+                    <h2>{{ post.title }}
+                        <br>
+                        <small>{{ post.createdAt|date('l, F j, Y') }}</small>
+                    </h2>
+                    <p>{{ post.body }}</p>
+                    <a href="{{ path('show', { slug: post.slug }) }}" class="btn btn-default btn-lg">Read More</a>
+                    <hr>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="{{ asset('bundles/kkstartbootstrap/js/jquery-1.11.0.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('bundles/kkstartbootstrap/js/bootstrap.min.js') }}"></script>
+
+{% endblock %}
